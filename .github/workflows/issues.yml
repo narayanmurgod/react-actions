@@ -4,7 +4,7 @@ on:
     types: [opened, edited, deleted, closed]
 
 jobs:
-  info:
+  issue-opened:
     name: issue opened
     runs-on: ubuntu-latest
     steps:
@@ -16,20 +16,23 @@ jobs:
         if: ${{ github.event.action == 'opened'}}
         run: echo "issue opened"
 
+  issue-updated:
     name: issue updated
     runs-on: ubuntu-latest
     steps:    
       - name: issue updated
         if: ${{ github.event.action == 'updated'}}
         run: echo "issue updated"
-    
+  
+  issue-closed:
     name: issue closed
     runs-on: ubuntu-latest
     steps:
       - name: issue closed
         if: ${{ github.event.action == 'closed' }}
         run: echo "issue closed"
-    
+  
+  issue-deleted:
     name: issue deleted
     runs-on: ubuntu-latest
     steps:
