@@ -7,35 +7,35 @@ jobs:
   issue-opened:
     name: issue opened
     runs-on: ubuntu-latest
+    if: ${{ github.event.action == 'opened'}}
     steps:
       # - name: display github context
       #   run: |
       #       echo "${{ toJson(github) }}"
       #       echo "${{ toJson(runner) }}"
       - name: issue opened
-        if: ${{ github.event.action == 'opened'}}
         run: echo "issue opened"
 
   issue-updated:
     name: issue updated
     runs-on: ubuntu-latest
+    if: ${{ github.event.action == 'updated'}}
     steps:    
       - name: issue updated
-        if: ${{ github.event.action == 'updated'}}
         run: echo "issue updated"
   
   issue-closed:
     name: issue closed
     runs-on: ubuntu-latest
+    if: ${{ github.event.action == 'closed' }}
     steps:
       - name: issue closed
-        if: ${{ github.event.action == 'closed' }}
         run: echo "issue closed"
   
   issue-deleted:
     name: issue deleted
     runs-on: ubuntu-latest
+    if: ${{ github.event.action == 'deleted' }}
     steps:
       - name: issue deleted
-        if: ${{ github.event.action == 'deleted' }}
         run: echo "issue deleted"
