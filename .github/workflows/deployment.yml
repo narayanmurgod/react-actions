@@ -12,7 +12,7 @@ jobs:
       - name: display github context
         run: |
             echo "${{ toJson(github) }}"
-            echo "${{ toJson(runners) }}"
+            echo "${{ toJson(runner) }}"
       - name: Check out repository code
         uses: actions/checkout@v2
       - name: install dependencies
