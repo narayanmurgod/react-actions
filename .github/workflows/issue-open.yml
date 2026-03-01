@@ -12,7 +12,11 @@ jobs:
         run: |
             echo "${{ toJson(github) }}"
             echo "${{ toJson(runner) }}"
+      - name: issue opened
+        if: ${{ github.event.action == 'opened'}}
+        run: echo "issue opened"
       - name: issue updated
+        if: ${{ github.event.action == 'updated'}}
         run: echo "issue updated"
       - name: issue closed
         if: ${{ github.event.action == 'closed' }}
