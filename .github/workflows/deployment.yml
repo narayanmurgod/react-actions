@@ -1,0 +1,35 @@
+name: test
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  info:
+    name: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: display github context
+        run: |
+            echo "${{ toJson(github) }}"
+            echo "${{ toJson(runners) }}"
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      - name: install dependencies
+        run: npm install
+      - name: run tests
+        run: npm test
+
+  deploy:
+    name: deploy
+    runs-on: ubuntu-latest
+    needs: info
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      - name: install dependencies
+        run: npm install
+      - name: run tests
+        run: npm test
+      - name: deploy to production
+        run: echo "deploying to production"

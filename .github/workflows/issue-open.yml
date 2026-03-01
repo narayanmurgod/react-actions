@@ -1,0 +1,22 @@
+name: issue opened
+on:
+  issues:
+    types: [opened, edited, deleted, closed]
+
+jobs:
+  info:
+    name: issue opened
+    runs-on: ubuntu-latest
+    steps:
+      - name: display github context
+        run: |
+            echo "${{ toJson(github) }}"
+            echo "${{ toJson(runners) }}"
+      - name: issue updated
+        run: echo "issue updated"
+      - name: issue closed
+        if: ${{ github.event.action == 'closed' }}
+        run: echo "issue closed"
+      - name: issue deleted
+        if: ${{ github.event.action == 'deleted' }}
+        run: echo "issue deleted"
