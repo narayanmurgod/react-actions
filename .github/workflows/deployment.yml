@@ -9,6 +9,10 @@ jobs:
     name: test
     runs-on: ubuntu-latest
     steps:
+      - name: Configure Git
+        run: |
+          git config --global user.email "narayanmurgod3388@gmail.com"
+          git config --global user.name "Narayan Murgod"
       - name: display github context
         run: |
             echo "${{ toJson(github) }}"
